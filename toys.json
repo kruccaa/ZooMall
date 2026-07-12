@@ -1,0 +1,84 @@
+[
+{
+"id": 1,
+"title": "Іграшка для котика",
+"description": "Мишка для гри з котом",
+"image": "https://pollypets.com.ua/m/goods/ga/h2c0e6384de104b1d94dd3f1c608b1e301.jpg_960x960_1_.jpg",
+"price": 200
+},
+
+{
+"id": 2,
+"title": "Іграшка для собачки",
+"description": "Кісточка для собак, рожева",
+"image": "https://pethouse.ua/assets/images/prods/sodapup/0000126491.jpg",
+"price": 400
+},
+
+ 
+{
+"id": 3,
+"title": "Набір для котів",
+"description": "3 сходинки з антикігтевим покриттям + кутова полиця з лежанкою, графіт",
+"image": "https://content.rozetka.com.ua/goods/images/big_tile/665962166.jpg",
+"price": 1200
+},
+
+{
+"id": 4,
+"title": "Для котів та собак",
+"description": "Інтерактивний автоматичний м'ячик" ,
+"image": "https://content1.rozetka.com.ua/goods/images/big/459390984.jpg",
+"price": 249
+},
+
+
+{
+"id": 5,
+"title": "Іграшка Trixie для гризунів",
+"description": "Морква + кукуруза з сизалю, натуральна жувальна іграшка для кроликів і гризіння",
+"image": "https://content1.rozetka.com.ua/goods/images/big/275477231.jpg",
+"price": 99
+},
+
+{
+"id": 6,
+"title": "Гумкове кiльце для собак",
+"description": "Кільце для апортування Collar PitchDog",
+"image": "https://content2.rozetka.com.ua/goods/images/big/661392885.jpg",
+"price": 183
+},
+
+{
+"id": 7,
+"title": "Будинок для хом'ячка",
+"description": "Дерев'яний будиночок для хом'яка TATRAPET",
+"image": "https://content1.rozetka.com.ua/goods/images/big/643959288.jpg",
+"price": 355
+
+},
+
+{
+"id": 8,
+"title": "Іграшка для папуг",
+"description": "Іграшка для папуг Karlie Flamingo Ring",
+"image": "https://content2.rozetka.com.ua/goods/images/big/10717755.jpg",
+"price": 378
+},
+
+{
+"id": 9,
+"title": "Набір для папуг",
+"description": "Сходи з іграшкою Природа",
+"image": "https://content.rozetka.com.ua/goods/images/big/520642090.jpg",
+"price": 22
+},
+
+{
+"id": 10,
+"title": "Локацiя для рибок",
+"description": "Декор для аквариума Затонувший ко-рабль",
+"image": "https://images.prom.ua/4430821757_w640_h640_dekor-dlya-akvariuma.jpg",
+"price": 890
+}
+]

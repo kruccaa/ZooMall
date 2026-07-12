@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@900&family=Sniglet:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-view">
+        <div class="content-container">
+            <div class="left-side">
+                <div class="top-row">
+                    <img class="logo-img" src="PawShop.png" alt="PawShop Logo">
+                    
+                    <!-- White User Icon SVG -->
+                    <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                
+                
+                <div class="burger-open" id="openMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="title">
+                    товари для<br>тварин
+                </div>
+            </div>
+
+            <div class="right-side">
+                
+                <img class="paw-graphic" src="203fd83d62f6bef6be22f593bd4955db94091c20.png" alt="Animals Paw">
+            </div>
+        </div>
+    </div>
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <!-- Close button (Хрестик) -->
+        <div id="closeMenuBtn">
+            <div class="close-btn"></div>
+        </div>
+        
+        <!-- Неоновий надпис зверху -->
+        <div class="neon-slogan">With love for pets ♡</div>
+
+        <div class="categories-container">
+            <div class="category-item">
+                <div class="circle-btn">
+                    <img src="food.png" class="category-icon" alt="Food">
+                </div>
+                <div class="category-label">Food</div>
+            </div>
+            <a href="toys.html" style="text-decoration: none; color: inherit;">
+                <div class="category-item">
+                    <div class="circle-btn">
+                        <img src="toys.png" class="category-icon" alt="Toys">
+                    </div>
+                    <div class="category-label">Toys</div>
+                </div>
+            </a>
+            
+            <div class="category-item">
+                <div class="circle-btn">
+                    <img src="clothes.png" class="category-icon" alt="Clothes">
+                </div>
+                <div class="category-label">Clothes</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        openMenuBtn.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+            // Remove the hash from URL when closing the menu to keep it clean
+            if (window.location.hash === '#menu') {
+                history.replaceState(null, null, ' ');
+            }
+        });
+
+        // Automatically open the menu if the URL contains #menu
+        if (window.location.hash === '#menu') {
+            menuOverlay.classList.add('active');
+        }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
