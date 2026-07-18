@@ -20,7 +20,7 @@
                     <img class="logo-img" src="PawShop.png" alt="PawShop Logo">
                     
                     <!-- White User Icon SVG -->
-                    <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg id="userIconBtn" class="user-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
@@ -79,6 +79,41 @@
         </div>
     </div>
 
+    <!-- Auth Modal Overlay -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal">
+            <div id="closeAuthBtn" class="close-btn-auth"></div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">Вхід</button>
+                <button class="auth-tab" id="registerTab">Реєстрація</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2>З поверненням!</h2>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit" class="auth-submit-btn">Увійти</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <h2>Створити акаунт</h2>
+                <input type="text" id="registerName" placeholder="Ім'я" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit" class="auth-submit-btn">Зареєструватися</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-icon">✨</div>
+        <div class="toast-message" id="toastMessage">Раді бачити!</div>
+    </div>
+
     <script>
         const openMenuBtn = document.getElementById('openMenuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -100,6 +135,71 @@
         if (window.location.hash === '#menu') {
             menuOverlay.classList.add('active');
         }
+
+        // Логіка для модального вікна авторизації
+        const userIconBtn = document.getElementById('userIconBtn');
+        const authOverlay = document.getElementById('authOverlay');
+        const closeAuthBtn = document.getElementById('closeAuthBtn');
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        userIconBtn.addEventListener('click', () => {
+            authOverlay.classList.add('active');
+        });
+
+        closeAuthBtn.addEventListener('click', () => {
+            authOverlay.classList.remove('active');
+        });
+
+        // Закриття при кліку поза вікном
+        authOverlay.addEventListener('click', (e) => {
+            if (e.target === authOverlay) {
+                authOverlay.classList.remove('active');
+            }
+        });
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.add('active');
+            registerForm.classList.remove('active');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.add('active');
+            loginForm.classList.remove('active');
+        });
+
+        // Toast та Логіка після сабміту
+        const toastNotification = document.getElementById('toastNotification');
+        const toastMessage = document.getElementById('toastMessage');
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toastNotification.classList.add('show');
+            setTimeout(() => {
+                toastNotification.classList.remove('show');
+            }, 3000);
+        }
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            authOverlay.classList.remove('active');
+            showToast('Раді бачити!');
+            userIconBtn.classList.add('logged-in');
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            authOverlay.classList.remove('active');
+            const name = document.getElementById('registerName').value;
+            showToast(`Вітаємо, ${name}!`);
+            userIconBtn.classList.add('logged-in');
+        });
     </script>
     <script src="script.js"></script>
   </body>

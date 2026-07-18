@@ -379,3 +379,206 @@ body {
 .back-arrow:hover {
     transform: scale(1.1);
 }
+
+/* ================= АВТОРИЗАЦІЯ (МОДАЛЬНЕ ВІКНО) ================= */
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.auth-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.auth-modal {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(189, 60, 158, 0.3);
+    transform: translateY(40px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.auth-overlay.active .auth-modal {
+    transform: translateY(0);
+}
+
+.close-btn-auth {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: #f1c5ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.close-btn-auth:hover {
+    background-color: #eab4f8;
+    transform: scale(1.1);
+}
+
+.close-btn-auth::before, .close-btn-auth::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background-color: #8f36a8;
+    border-radius: 3px;
+}
+
+.close-btn-auth::before { transform: rotate(45deg); }
+.close-btn-auth::after { transform: rotate(-45deg); }
+
+.auth-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f1c5ff;
+}
+
+.auth-tab {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #bfa3c6;
+    padding-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+    width: 50%;
+}
+
+.auth-tab.active {
+    color: #bd3c9e;
+    border-bottom: 3px solid #bd3c9e;
+}
+
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-form.active {
+    display: flex;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-form h2 {
+    font-family: 'Sniglet', cursive;
+    color: #8f36a8;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f1c5ff;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fafafa;
+}
+
+.auth-form input:focus {
+    border-color: #bd3c9e;
+    box-shadow: 0 0 10px rgba(189, 60, 158, 0.1);
+    background-color: #ffffff;
+}
+
+.auth-submit-btn {
+    background-color: #bd3c9e;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+.auth-submit-btn:hover {
+    background-color: #8f36a8;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(143, 54, 168, 0.4);
+}
+
+/* ================= СПЛИВАЮЧІ ПОВІДОМЛЕННЯ (TOAST) ================= */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(189, 60, 158, 0.4);
+    z-index: 300;
+    transform: translateX(150%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-left: 5px solid #bd3c9e;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    font-size: 24px;
+}
+
+.toast-message {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #8f36a8;
+    font-size: 16px;
+}
+
+/* Стан "Увійшов в акаунт" для іконки */
+.user-icon {
+    transition: all 0.3s ease;
+}
+
+.user-icon.logged-in {
+    fill: #ffffff;
+    stroke: #ffffff;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    transform: scale(1.1);
+}
