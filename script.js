@@ -126,6 +126,31 @@ function updateCartUI() {
         if (cartTotalPrice) {
             cartTotalPrice.textContent = total;
         }
+
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        const useBonusesContainer = document.getElementById('useBonusesContainer');
+        const availableBonusesSpan = document.getElementById('availableBonuses');
+        const finalPriceContainer = document.getElementById('finalPriceContainer');
+        const cartFinalPrice = document.getElementById('cartFinalPrice');
+        const useBonusesCheckbox = document.getElementById('useBonusesCheckbox');
+
+        if (user && user.bonuses > 0 && total > 0) {
+            if (useBonusesContainer) useBonusesContainer.style.display = 'block';
+            if (availableBonusesSpan) availableBonusesSpan.textContent = user.bonuses;
+            
+            if (useBonusesCheckbox && useBonusesCheckbox.checked) {
+                let discount = Math.min(user.bonuses, total);
+                let final = total - discount;
+                if (finalPriceContainer) finalPriceContainer.style.display = 'block';
+                if (cartFinalPrice) cartFinalPrice.textContent = final;
+            } else {
+                if (finalPriceContainer) finalPriceContainer.style.display = 'none';
+            }
+        } else {
+            if (useBonusesContainer) useBonusesContainer.style.display = 'none';
+            if (finalPriceContainer) finalPriceContainer.style.display = 'none';
+            if (useBonusesCheckbox) useBonusesCheckbox.checked = false;
+        }
     }
 }
 
@@ -188,8 +213,10 @@ function checkout() {
     }
     
     let totalBonusesEarned = 0;
+    let totalPrice = 0;
     cart.forEach(item => {
         totalBonusesEarned += item.bonus * item.quantity;
+        totalPrice += item.price * item.quantity;
         user.orders.push({
             id: item.id,
             title: item.title,
@@ -198,6 +225,13 @@ function checkout() {
             date: new Date().toLocaleDateString()
         });
     });
+    
+    const useBonusesCheckbox = document.getElementById('useBonusesCheckbox');
+    let bonusesUsed = 0;
+    if (useBonusesCheckbox && useBonusesCheckbox.checked && user.bonuses > 0) {
+        bonusesUsed = Math.min(user.bonuses, totalPrice);
+        user.bonuses -= bonusesUsed;
+    }
     
     user.bonuses += totalBonusesEarned;
     // Calculate new discount based on total bonuses (e.g., 1% per 100 bonuses, max 15%)
@@ -211,14 +245,19 @@ function checkout() {
     
     document.getElementById('cartOverlay').classList.remove('active');
     
+    let toastMsgText = `Замовлення оформлено! Нараховано ${totalBonusesEarned} бонусів 🎁`;
+    if (bonusesUsed > 0) {
+        toastMsgText = `Списано ${bonusesUsed} бонусів. Нараховано ${totalBonusesEarned} 🎁`;
+    }
+
     let toast = document.getElementById('toastNotification');
     if (toast) {
         const toastMsg = document.getElementById('toastMessage');
-        toastMsg.textContent = `Замовлення оформлено! Нараховано ${totalBonusesEarned} бонусів 🎁`;
+        toastMsg.textContent = toastMsgText;
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 4000);
     } else {
-        alert(`Замовлення оформлено! Нараховано ${totalBonusesEarned} бонусів 🎁`);
+        alert(toastMsgText);
     }
 }
 
@@ -232,6 +271,15 @@ const cartModalHTML = `
             <div class="cart-total" style="text-align: right; margin-top: 20px; font-size: 18px; font-family: 'Montserrat', sans-serif;">
                 <strong>Разом: <span id="cartTotalPrice">0</span> грн</strong>
                 <p style="color: #ff9f43; font-size: 14px; margin-top: 5px;">Нарахується бонусів: <span id="cartTotalBonus">0</span> 🎁</p>
+                <div id="useBonusesContainer" style="display: none; margin-top: 10px; font-size: 14px; text-align: right;">
+                    <label style="cursor: pointer; display: flex; align-items: center; justify-content: flex-end; gap: 5px;">
+                        <input type="checkbox" id="useBonusesCheckbox"> Списати бонуси (<span id="availableBonuses">0</span> доступно)
+                    </label>
+                    <p style="font-size: 12px; color: #888; margin-top: 3px;">1 бонус = 1 грн</p>
+                </div>
+                <strong id="finalPriceContainer" style="display: none; color: #bd3c9e; margin-top: 10px; font-size: 20px;">
+                    До сплати: <span id="cartFinalPrice">0</span> грн
+                </strong>
             </div>
             <button class="auth-submit-btn" id="checkoutBtn" style="width: 100%; margin-top: 15px;">Оформити замовлення</button>
         </div>
@@ -252,6 +300,7 @@ const profileModalHTML = `
                 <div class="stat-box">
                     <h4>Мої бонуси</h4>
                     <p>🎁 <span id="profileBonuses">0</span></p>
+                    <p style="font-size: 10px; color: #888; margin-top: 5px;">1 бонус = 1 гривня</p>
                 </div>
                 <div class="stat-box">
                     <h4>Моя знижка</h4>
@@ -365,6 +414,12 @@ document.body.addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-btn')) {
         const id = e.target.dataset.id;
         removeFromCart(id);
+    }
+});
+
+document.body.addEventListener('change', (e) => {
+    if (e.target.id === 'useBonusesCheckbox') {
+        updateCartUI();
     }
 });
 
