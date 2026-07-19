@@ -24,6 +24,16 @@
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
+                    
+                    <!-- White Cart Icon SVG -->
+                    <div class="cart-icon-wrapper" id="cartIconBtn">
+                        <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </div>
                 </div>
                 
                 
@@ -145,8 +155,20 @@
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
 
+        // Check login state on load
+        if (localStorage.getItem('currentUser')) {
+            userIconBtn.classList.add('logged-in');
+        }
+
         userIconBtn.addEventListener('click', () => {
-            authOverlay.classList.add('active');
+            if (localStorage.getItem('currentUser')) {
+                // Open Profile (implemented in script.js)
+                if (typeof openProfileModal === 'function') {
+                    openProfileModal();
+                }
+            } else {
+                authOverlay.classList.add('active');
+            }
         });
 
         closeAuthBtn.addEventListener('click', () => {
@@ -191,6 +213,17 @@
             authOverlay.classList.remove('active');
             showToast('Раді бачити!');
             userIconBtn.classList.add('logged-in');
+            
+            // Mock Login user
+            const emailInput = loginForm.querySelector('input[type="email"]').value;
+            const userName = emailInput.split('@')[0]; // simple mock name
+            const user = { name: userName, bonuses: 100, discount: 5, orders: [] };
+            
+            // Check if user already exists to keep history
+            const existing = JSON.parse(localStorage.getItem('currentUser'));
+            if (!existing) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+            }
         });
 
         registerForm.addEventListener('submit', (e) => {
@@ -199,6 +232,9 @@
             const name = document.getElementById('registerName').value;
             showToast(`Вітаємо, ${name}!`);
             userIconBtn.classList.add('logged-in');
+            
+            const user = { name: name, bonuses: 0, discount: 0, orders: [] };
+            localStorage.setItem('currentUser', JSON.stringify(user));
         });
     </script>
     <script src="script.js"></script>
