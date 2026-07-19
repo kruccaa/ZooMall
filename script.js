@@ -31,7 +31,8 @@ function renderToys(toys) {
 }
 
 if (container) {
-    fetch('toys.json')
+    const dataSource = container.getAttribute('data-source') || 'toys.json';
+    fetch(dataSource)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Файл не знайдено (Статус: ${response.status})`);

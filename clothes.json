@@ -1,0 +1,72 @@
+[
+  {
+    "id": 201,
+    "title": "Теплий светр для собак",
+    "description": "В'язаний светр для дрібних порід",
+    "image": "https://4dog.com.ua/image/cache/catalog/brands/dogsbomba/y-345/y-345-1-1000x1000.png",
+    "price": 450
+  },
+  {
+    "id": 202,
+    "title": "Дощовик для собак",
+    "description": "Водонепроникний плащ з капюшоном",
+    "image": "https://content.rozetka.com.ua/goods/images/big/607865024.webp",
+    "price": 600
+  },
+  {
+    "id": 203,
+    "title": "Костюм бджілки",
+    "description": "Смішний костюм для котів і собак",
+    "image": "https://img.joomcdn.net/44b31625a322f06d5e6172c5c87c193bac568308_original.jpeg",
+    "price": 350
+  },
+  {
+    "id": 204,
+    "title": "Зимовий комбінезон",
+    "description": "Утеплений комбінезон на флісі",
+    "image": "https://waudog.ua/image/cache/catalog/products2/415-4066_00_01-300x300.jpg",
+    "price": 850
+  },
+  {
+    "id": 205,
+    "title": "Плавальний жилет",
+    "description": "Плавальний жилет для собак",
+    "image": "https://content2.rozetka.com.ua/goods/images/big/461630450.jpg",
+    "price": 250
+  },
+  {
+    "id": 206,
+    "title": "Повідець для папуги",
+    "description": "Повідець для папуги зі шлейкою, для хвилястика, корелли, чеха та інших",
+    "image": "https://content2.rozetka.com.ua/goods/images/big/653356648.jpg",
+    "price": 180
+  },
+  {
+    "id": 207,
+    "title": "Светр для котів",
+    "description": "В'язаний светр для котів",
+    "image": "https://content1.rozetka.com.ua/goods/images/big/617794494.jpg",
+    "price": 550
+  },
+  {
+    "id": 208,
+    "title": "Панамка для собак",
+    "description": "Стильна панама в спеку",
+    "image": "https://content1.rozetka.com.ua/goods/images/big/659642745.jpg",
+    "price": 130
+  },
+  {
+    "id": 209,
+    "title": "Комір-нашийник",
+    "description": "Комір-нашийник для загоєння ран для собак та кішок Yellow Flower",
+    "image": "https://content2.rozetka.com.ua/goods/images/big/392296596.jpg",
+    "price": 320
+  },
+  {
+    "id": 210,
+    "title": "Захисний шолом",
+    "description": "Захисний шолом для хом'яков та папуг 1 шт Podarkus 4,5 х 4 см",
+    "image": "https://content.rozetka.com.ua/goods/images/big/662078702.jpg",
+    "price": 280
+  }
+]

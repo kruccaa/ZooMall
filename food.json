@@ -1,0 +1,72 @@
+[
+  {
+    "id": 101,
+    "title": "Сухий корм Club 4 Paws Premium для котів",
+    "description": "З куркою, 14 кг. Повнораціонний корм преміум класу.",
+    "image": "https://content2.rozetka.com.ua/goods/images/big/582977502.jpg",
+    "price": 1650
+  },
+  {
+    "id": 102,
+    "title": "Сухий корм Brit Premium by Nature",
+    "description": "Для дорослих собак великих порід (Adult L), 15 кг.",
+    "image": "https://content2.rozetka.com.ua/goods/images/big/386450279.jpg",
+    "price": 2100
+  },
+  {
+    "id": 103,
+    "title": "Сухий корм Royal Canin Kitten",
+    "description": "Для кошенят віком до 12 місяців, 2 кг.",
+    "image": "https://content2.rozetka.com.ua/goods/images/big/561766713.jpg",
+    "price": 920
+  },
+  {
+    "id": 104,
+    "title": "Вологий корм Purina Pro Plan",
+    "description": "Nutrisavour для стерилізованих котів з лососем, 85 г.",
+    "image": "https://content2.rozetka.com.ua/goods/images/big/346596322.jpg",
+    "price": 42
+  },
+  {
+    "id": 105,
+    "title": "Сухий корм Josera Festival",
+    "description": "Для вибагливих дорослих собак, з лососем, 15 кг.",
+    "image": "https://content1.rozetka.com.ua/goods/images/big/617537937.jpg",
+    "price": 2850
+  },
+  {
+    "id": 106,
+    "title": "Вологий корм Optimeal",
+    "description": "Беззерновий паштет з телятиною та курячим філе для собак, 85 г.",
+    "image": "https://pethouse.ua/assets/images/prods/optimeal/0000090351.jpg",
+    "price": 35
+  },
+  {
+    "id": 107,
+    "title": "Сухий корм Purina Cat Chow",
+    "description": "Для стерилізованих котів з куркою, 15 кг.",
+    "image": "https://image.maudau.com.ua/webp/size/xl/products/af/cd/ae/afcdae78-2bbb-421b-a10c-5d6dbd6baa9c",
+    "price": 2150
+  },
+  {
+    "id": 108,
+    "title": "Фієста корм для хом'яків",
+    "description": "Повноцінний вітамінізований корм – основний раціон для хом'яків. Вона складена відповідно до рекомендацій ветеринарів та фахівців з розведення гризунів.",
+    "image": "https://vetmarket.biz.ua/upload/resize_cache/iblock/2d7/u940m0ay65j3131wa752vzkejyfe8zrn/336_459_15f0cd45649deb58891dbef179047a374/korm_dlya_khomyakov_priroda_fiesta_khomyachok_600_g.jpg",
+    "price": 280
+  },
+  {
+    "id": 109,
+    "title": "Корм для папуг",
+    "description": "Повсякденний корм для хвилястих папуг Vitakraft Menu Vital 500 г",
+    "image": "https://content1.rozetka.com.ua/goods/images/big/10672775.jpg",
+    "price": 360
+  },
+  {
+    "id": 110,
+    "title": "Сухий корм для риб",
+    "description": "ухий корм для ставкових риб Tetra у паличках Pond Sticks 40л+10л",
+    "image": "https://content1.rozetka.com.ua/goods/images/big/657406933.jpg",
+    "price": 1800
+  }
+]
